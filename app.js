@@ -1,5 +1,4 @@
 // Query selectors
-const allButtons = document.querySelectorAll("div");
 const numButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator");
 const acButton = document.querySelector(".AC");
@@ -10,20 +9,26 @@ const display = document.querySelector(".calculator__display");
 let currentNum = "";
 let operator = "";
 let prevNum = "";
+let result;
 
 // Functions
 const calculate = (currentNum, operator, prevNum) => {
   const toNum1 = Number(currentNum);
   const toNum2 = Number(prevNum);
   if (operator === "+") {
+    result = toNum1 + toNum2;
     return toNum1 + toNum2;
   } else if (operator === "-") {
+    result = toNum1 - toNum2;
     return toNum1 - toNum2;
   } else if (operator === "x") {
+    result = toNum1 * toNum2;
     return toNum1 * toNum2;
   } else if (operator === "/") {
+    result = toNum1 / toNum2;
     return toNum2 / toNum1;
   } else if (operator === "%") {
+    result = toNum1 % toNum2;
     return toNum2 % toNum1;
   }
 };

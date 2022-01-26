@@ -1,16 +1,30 @@
-const calculate = (num1, operator, num2) => {
-  const toNum1 = Number(num1);
-  const toNum2 = Number(num2);
-  if (operator === "+") {
-    return toNum1 + toNum2;
-  } else if (operator === "-") {
-    return toNum1 - toNum2;
-  } else if (operator === "x") {
-    return toNum1 * toNum2;
-  } else if (operator === "/") {
-    return toNum1 / toNum2;
-  } else if (operator === "%") {
-    return toNum1 % toNum2;
-  } 
-} 
-console.log(calculate("5", "+", "3"))
+let result;
+let operatorCount = 2;
+
+const calculate = (currentNum, operator, prevNum) => {
+    const toNum1 = Number(currentNum);
+    const toNum2 = Number(prevNum);
+    if (operator === "+") {
+      result += toNum1 + toNum2;
+      
+    } else if (operator === "-") {
+      result += toNum1 - toNum2;
+      
+    } else if (operator === "x") {
+      result += toNum1 * toNum2;
+      
+    } else if (operator === "/") {
+      result += toNum1 / toNum2;
+      
+    } else if (operator === "%") {
+      result += toNum1 % toNum2;
+      
+    }
+    
+  // else {
+  //   operatorCount--;
+  //   return result + calculate(currentNum, operator, prevNum, operatorCount);
+  // }
+};
+calculate("5", "+", "3")
+console.log(result)
