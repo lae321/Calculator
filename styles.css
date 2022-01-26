@@ -11,6 +11,7 @@ body {
 .calculator {
   width: fit-content;
   height: fit-content;
+  border: 1px solid black;
 }
 .calculator__display {
   min-height: 100px;
@@ -20,10 +21,10 @@ body {
 .calculator__buttons {
   height: 80%;
   display: grid;
-  border: 1px solid black;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   gap: 0;
+  background-color: lightgray;
 }
 .calculator__buttons div {
   display: flex;
@@ -33,4 +34,5 @@ body {
   width: 75px;
   background-color: lightgray;
   border: 1px black solid;
+  border-radius: 50%;
 }
