@@ -4,17 +4,17 @@ const numButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator");
 const acButton = document.querySelector(".AC");
 const equalsButton = document.querySelector(".equals");
+const display = document.querySelector(".calculator__display");
 
 // Calculator variables
-let num1 = "";
-console.log(num1)
+let currentNum = "";
 let operator = "";
-let num2 = "";
+let prevNum = "";
 
 // Functions
-const calculate = (num1, operator, num2) => {
-  const toNum1 = Number(num1);
-  const toNum2 = Number(num2);
+const calculate = (currentNum, operator, prevNum) => {
+  const toNum1 = Number(currentNum);
+  const toNum2 = Number(prevNum);
   if (operator === "+") {
     return toNum1 + toNum2;
   } else if (operator === "-") {
@@ -22,34 +22,48 @@ const calculate = (num1, operator, num2) => {
   } else if (operator === "x") {
     return toNum1 * toNum2;
   } else if (operator === "/") {
-    return toNum1 / toNum2;
+    return toNum2 / toNum1;
   } else if (operator === "%") {
-    return toNum1 % toNum2;
-  } 
-} 
+    return toNum2 % toNum1;
+  }
+};
+
+const updateDisplay = (input) => {
+  display.innerHTML = input;
+};
 
 // When number button clicked
-numButtons.forEach(button => {
+numButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
-    //console.log(event.target.innerHTML);
-    num1 = event.target.innerHTML
+    event.preventDefault();
+    currentNum += event.target.innerHTML;
+    updateDisplay(currentNum);
   });
 });
 
 // When operator button clicked
-operatorButtons.forEach(button => {
+operatorButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
-    operator = event.target.innerHTML
+    operator = event.target.innerHTML;
+    updateDisplay(operator);
+    prevNum = currentNum;
+    currentNum = ""
   });
 });
 
 // When equals button clicked
 equalsButton.addEventListener("click", (event) => {
-    calculate(num1, operator, num2)
-  });
+  calculate(currentNum, operator, prevNum);
+  updateDisplay(calculate(currentNum, operator, prevNum));
+});
 
-
-
+// When clear button clicked
+acButton.addEventListener("click", (event) => {
+  currentNum = "";
+  prevNum = "";
+  operator = "";
+  updateDisplay("");
+});
 
 // Basic mathematical functionality
 // Retrieve value when button is pressed
