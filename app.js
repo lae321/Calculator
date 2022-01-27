@@ -20,7 +20,7 @@ const calculate = (currentNum, operator, prevNum) => {
     return toNum1 + toNum2;
   } else if (operator === "-") {
     result = toNum1 - toNum2;
-    return toNum1 - toNum2;
+    return toNum2 - toNum1;
   } else if (operator === "x") {
     result = toNum1 * toNum2;
     return toNum1 * toNum2;
@@ -52,7 +52,7 @@ operatorButtons.forEach((button) => {
     operator = event.target.innerHTML;
     updateDisplay(operator);
     prevNum = currentNum;
-    currentNum = ""
+    currentNum = "";
   });
 });
 
