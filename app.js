@@ -3,7 +3,8 @@ const numButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator");
 const acButton = document.querySelector(".AC");
 const equalsButton = document.querySelector(".equals");
-const display = document.querySelector(".calculator__display");
+const currNum = document.querySelector(".currNum");
+const preNum = document.querySelector(".preNum")
 
 // Calculator variables
 let currentNum = "";
@@ -34,15 +35,20 @@ const calculate = (currentNum, operator, prevNum) => {
 };
 
 const updateDisplay = (input) => {
-  display.innerHTML = input;
+  currNum.innerHTML = input;
+  preNum.innerHTML = prevNum + operator;
 };
 
 // When number button clicked
 numButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
     event.preventDefault();
-    currentNum += event.target.innerHTML;
-    updateDisplay(currentNum);
+    if (currentNum.includes(".") && event.target.innerHTML === ".") {
+      return;
+    } else {
+      currentNum += event.target.innerHTML;
+      updateDisplay(currentNum);
+    }
   });
 });
 
@@ -50,16 +56,18 @@ numButtons.forEach((button) => {
 operatorButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
     operator = event.target.innerHTML;
-    updateDisplay(operator);
     prevNum = currentNum;
     currentNum = "";
+    updateDisplay("");
   });
 });
 
 // When equals button clicked
 equalsButton.addEventListener("click", (event) => {
-  calculate(currentNum, operator, prevNum);
-  updateDisplay(calculate(currentNum, operator, prevNum));
+  currNum.innerHTML = calculate(currentNum, operator, prevNum);
+  preNum.innerHTML = "";
+  prevNum = "";
+  operator = "";
 });
 
 // When clear button clicked
@@ -70,10 +78,3 @@ acButton.addEventListener("click", (event) => {
   updateDisplay("");
 });
 
-// Basic mathematical functionality
-// Retrieve value when button is pressed
-// Print value to screen
-// Save value to variable, eg, num1, when operation is pressed
-
-// Additonal functionality
-// Clear number and operation variables and display when AC pressed

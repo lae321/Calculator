@@ -35,6 +35,9 @@ body {
   word-wrap: break-word;
   word-break: break-all;
 }
+.calculator__display .preNum {
+  font-size: 24px;
+}
 .calculator__buttons {
   height: 80%;
   width: 308px;
