@@ -41,8 +41,12 @@ const updateDisplay = (input) => {
 numButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
     event.preventDefault();
-    currentNum += event.target.innerHTML;
-    updateDisplay(currentNum);
+    if (currentNum.includes(".") && event.target.innerHTML === ".") {
+      return;
+    } else {
+      currentNum += event.target.innerHTML;
+      updateDisplay(currentNum);
+    }
   });
 });
 
