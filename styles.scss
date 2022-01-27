@@ -40,6 +40,10 @@ body {
     flex-direction: column;
     word-wrap: break-word;
     word-break: break-all;
+
+    .preNum {
+      font-size: 24px;
+    }
   }
 
   &__buttons {
