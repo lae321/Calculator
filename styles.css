@@ -1,38 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&family=Roboto&family=Share+Tech+Mono&display=swap");
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
+  font-size: 24px;
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
 }
 
 .calculator {
-  width: fit-content;
-  height: fit-content;
-  border: 1px solid black;
+  width: 308px;
+  height: 485px;
+  margin: 5% auto;
+  box-shadow: 0 15px 15px 0 rgba(0, 0, 0, 0.25);
 }
 .calculator__display {
-  min-height: 100px;
-  min-width: 225px;
-  background-color: grey;
+  min-height: 110px;
+  max-height: auto;
+  width: 308px;
+  background: linear-gradient(27deg, #6a8f5f 0%, #6a8f5f 19%, #8bbe7b 100%);
+  border-radius: 10px 10px 0 0;
+  opacity: 80%;
+  padding: 10px;
+  font-family: "Share Tech Mono", sans-serif;
+  font-size: 30px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 .calculator__buttons {
   height: 80%;
+  width: 308px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   gap: 0;
-  background-color: lightgray;
+  background: linear-gradient(25deg, #7a7a7a 0%, #a3a3a3 50%, #afafaf 100%);
+  cursor: pointer;
+  border-radius: 0 0 10px 10px;
+  font-family: "Roboto", sans-serif;
+  justify-content: center;
+  align-content: center;
 }
 .calculator__buttons div {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 75px;
-  width: 75px;
-  background-color: lightgray;
-  border: 1px black solid;
-  border-radius: 50%;
+  background-color: none;
+  border: 1px solid gray;
+  outline: none;
+}
+.calculator__buttons .bottom-buttonL {
+  border-radius: 0 0 0 10px;
+}
+.calculator__buttons .bottom-buttonR {
+  border-radius: 0 0 10px 0;
+}
+.calculator__buttons div:hover {
+  background-color: rgba(128, 128, 128, 0.548);
+}
+.calculator__buttons .logo {
+  font-family: "Monoton", sans-serif;
+  font-size: 30px;
+  color: #505050;
 }
